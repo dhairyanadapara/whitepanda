@@ -7,4 +7,6 @@ let PlacesSchema = mongoose.Schema({
         Picture: {type : String }
     },
     Quantity:{type: Number, default: 1}
-})
+});
+
+module.exports = mongoose.model('PlacePrice ', PlacesSchema, 'places');
