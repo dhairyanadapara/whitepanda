@@ -5,8 +5,9 @@ router.get('/places', (req,res)=>{
     Place.find({},(err,places)=>{
         if(err) return res.status(404).send();
 
-        console.log(places);
-        res.send({places:places});
+        console.log(__dirname);
+        res.render('cards',{places:places});
+        console.log(__dirname);
     });
 });
 
@@ -23,7 +24,6 @@ router.post('/places', (req,res)=>{
         if(err) return res.status(404).send();
 
         console.log(`added to database`);
-        res.redirect('/places');
     })
 });
 

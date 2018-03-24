@@ -1,0 +1,46 @@
+</div>
+{{#each places}}
+<div class="row">
+    <div class="col s6 m3">
+        <div class="card">
+            <div class="card-image">
+                <input type="hidden" value="{{_id}}" />
+                <img src="http://materializecss.com/images/sample-1.jpg">
+                <span class="card-title">{{Name}}</span>
+
+            </div>
+            <form method="POST" action="/places/{{_id}}">
+                <input type="hidden" name="_method" value="put" />
+                <button type="submit">
+                <a class="btn-floating halfway-fab waves-effect waves-light red">
+                    <i class="material-icons">-</i>
+                </a>
+                </button >
+            </form>
+            <p class="card-content">Qty: {{Quantity}}</p>
+            <p class="card-content">Price : {{Details.Price}}</p>
+        </div>
+    </div>
+</div>
+</div>
+{{/each}}
+</div>
+<script>
+$('form').submit((e)=>{
+    e.preventDefault();
+    let formAction = $(this).attr('action');
+    console.log(formAction);
+    $.ajax({
+        url: formAction + '/' + $.param({id : _id),
+        type: 'DELETE',
+         success: function(){
+             console.log('Done');
+         }
+    })
+})
+
+</script>
+
+<div>
+
+</div>
