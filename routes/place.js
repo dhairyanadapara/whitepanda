@@ -1,12 +1,12 @@
 let router = require('express').Router();
 let Place = require('../models/model');
+let total = require('../public/js/totalPrice');
 
 router.get('/places', (req,res)=>{
     Place.find({},(err,places)=>{
         if(err) return res.status(404).send();
 
-        console.log(__dirname);
-        res.render('cards',{places:places});
+        res.render('cards',{places:places,total:total.totalPrice(places)});
         console.log(__dirname);
     });
 });

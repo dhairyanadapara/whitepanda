@@ -4,6 +4,7 @@ let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 let path = require('path');
 let hbs  = require('hbs');
+let methodOverride = require('method-override');
 
 
 let credentials = require('./credentials/credentials');
@@ -22,6 +23,7 @@ mongoose.connect(credentials.database, (err) => {
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 let placeRoute = require('./routes/place.js')
 
