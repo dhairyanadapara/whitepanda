@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "NODE_ENV=test mocha ./test/places.test.js"
   },
   "author": "dhairyanadapara",
   "license": "ISC",
@@ -13,7 +14,13 @@
     "express": "^4.16.3",
     "hbs": "^4.0.1",
     "method-override": "^2.3.10",
+    "mongodb": "^3.0.5",
     "mongoose": "^5.0.11",
     "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "expect": "^22.4.3",
+    "mocha": "^5.0.5",
+    "supertest": "^3.0.0"
   }
 }
