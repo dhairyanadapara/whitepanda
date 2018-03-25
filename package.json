@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./test/places.test.js"
+    "start": "node app.js",
+    "test": "NODE_ENV=test mocha ./test/places.test.js"
   },
   "author": "dhairyanadapara",
   "license": "ISC",

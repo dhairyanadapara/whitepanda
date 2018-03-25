@@ -23,9 +23,8 @@ let placeRoute = require('./routes/place.js')
 
 app.use(placeRoute);
 
-
-
-
 app.listen(credentials.port, ()=>{
     console.log('Server is UP');
 });
+
+module.exports = app;
