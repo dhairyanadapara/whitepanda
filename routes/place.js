@@ -7,7 +7,6 @@ router.get('/places', (req,res)=>{
         if(err) return res.status(404).send();
 
         res.render('cards',{places:places,total:total.totalPrice(places)});
-        console.log(__dirname);
     });
 });
 
@@ -15,16 +14,17 @@ router.post('/places', (req,res)=>{
 
     let place = new Place();
 
-    place.Name=req.body.name;
-    place.Details.Price = req.body.price;
-    place.Details.Picture = req.body.picture;
-    place.Quantity = req.body.quantity;
+    place.Name=req.body.Name;
+    place.Details.Price = req.body.Price;
+    place.Details.Picture = req.body.Picture;
+    place.Quantity = req.body.Quantity;
     
     place.save((err)=>{
         if(err) return res.status(404).send();
 
         console.log(`added to database`);
     })
+    res.redirect('/places');
 });
 
 router.delete('/places/:id',(req,res)=>{
@@ -39,7 +39,7 @@ router.delete('/places/:id',(req,res)=>{
             return res.status(404).send();
         }
 
-        console.log(`Item is removed`);
+        res.redirect('/places');
     });
 });
 
