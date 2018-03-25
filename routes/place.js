@@ -30,14 +30,8 @@ router.post('/places', (req,res)=>{
 router.delete('/places/:id',(req,res)=>{
     let id = req.params.id;
 
-
-
     Place.findOneAndRemove({_id:id},(err,place)=>{
         if(err) return res.status(404).send();;
-
-        if (!place) {
-            return res.status(404).send();
-        }
 
         res.redirect('/places');
     });
