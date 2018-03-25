@@ -5,8 +5,6 @@ const { ObjectID } = require('mongodb');
 let app = require('../app');
 let Places = require('../models/model');
 
-
-
 let places = [{
     _id: new ObjectID(),
     Name: "Gujarat",
@@ -32,61 +30,37 @@ beforeEach((done) => {
 });
 
 
-// describe('GET /places', () => {
-//     it('should show all places', (done) => {
-//         request(app)
-//             .get('/places')
-//             .expect(200)
-//             .end(done);
-//     })
-// });
+describe('GET /places', () => {
+    it('should show all places', (done) => {
+        request(app)
+            .get('/places')
+            .expect(200)
+            .end(done);
+    })
+});
 
-// describe('POST /places', () => {
-//     it('should add new place', (done) => {
-//         var text = 'Dubai';
-
-//         request(app)
-//             .post('/places')
-//             .send({ text })
-//             .expect(200)
-//             .expect((res) => {
-//                 expect(res.body.text).toBe(text);
-//             })
-//             .end((err) => {
-//                 if (err) {
-//                     return done(err);
-//                 }
-
-
-//                 Places.find({ text }).then((places) => {
-//                     expect(places.length).toBe(1);
-//                     expect(places[0].text).toBe(text);
-//                     done();
-//                 }).catch((e) => done(e));
-//             });
-//     });
-// });
-
-describe('DELETE /places/:id', () => {
-    it('should remove a place', (done) => {
-        var hexId = places[1]._id.toHexString();
+describe('POST /places', () => {
+    it('should add new place', (done) => {
+        var text = 'Dubai';
 
         request(app)
-            .delete(`/places/${hexId}`)
+            .post('/places')
+            .send({ text })
             .expect(200)
             .expect((res) => {
-                expect(res.body.todo._id).toBe(hexId);
+                expect(res.body.text).toBe(text);
             })
-            .end((err, res) => {
+            .end((err) => {
                 if (err) {
                     return done(err);
                 }
 
-                Places.findById(hexId).then((place) => {
-                    expect(place).toNotExist();
+
+                Places.find({ text }).then((places) => {
+                    expect(places.length).toBe(1);
+                    expect(places[0].text).toBe(text);
                     done();
                 }).catch((e) => done(e));
             });
-
     });
 });
